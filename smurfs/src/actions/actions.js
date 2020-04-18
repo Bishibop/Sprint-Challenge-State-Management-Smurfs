@@ -41,3 +41,40 @@ export const deleteSmurf = (smurf) => dispatch => {
     })
     .catch(err => dispatch({ type: DELETE_SMURF_FAIL, payload: err}));
 };
+
+// To load the form with the smurf
+export const EDIT_SMURF = 'EDIT_SMURF';
+export const editSmurf = (smurf) => {
+  return { type: EDIT_SMURF, payload: smurf };
+};
+
+// To clear the form of the smurfToEdit
+export const CLEAR_EDIT_SMURF = 'CLEAR_EDIT_SMURF';
+export const clearEditSmurf = () => {
+  return {
+    type: CLEAR_EDIT_SMURF
+  };
+};
+
+// To clear the form of the smurfToEdit
+export const CLEAR_EDITING = 'CLEAR_EDITING';
+export const clearEditing = () => {
+  return {
+    type: CLEAR_EDITING
+  };
+};
+
+// To actually make the put request with the form
+export const PUT_SMURF_START = 'PUT_SMURF_START';
+export const PUT_SMURF_SUCCESS = 'PUT_SMURF_SUCCESS';
+export const PUT_SMURF_FAIL = 'PUT_SMURF_FAIL';
+
+export const putSmurf = (smurf) => dispatch => {
+  dispatch({ type: PUT_SMURF_START, payload: smurf });
+  axios
+    .put(`http://192.168.1.208:3333/smurfs/${smurf.id}`, smurf)
+    .then(res => {
+      return dispatch({ type: PUT_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(err => dispatch({ type: PUT_SMURF_FAIL, payload: err}));
+};

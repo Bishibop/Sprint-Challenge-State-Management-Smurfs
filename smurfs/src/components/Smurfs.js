@@ -4,18 +4,19 @@ import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/actions';
 
 import Smurf from './Smurf';
+import SmurfForm from './SmurfForm';
 
 function Smurfs({ smurfs, getSmurfs }) {
   useEffect(() => {
     getSmurfs();
   }, []);
 
-  console.log('smurfs in the upper compoent: ', smurfs);
   return (
     <div className='smurfs-container'>
       {smurfs.map(smurf => (
         <Smurf key={smurf.id} smurf={smurf} />
       ))}
+      <SmurfForm />
     </div>
   );
 }

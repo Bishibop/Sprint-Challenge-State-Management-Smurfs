@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Smurf({ smurf }) {
-  console.log('your smurf in the component: ', smurf);
   return (
     <div className='smurfs'>
       <h3>{smurf.name}</h3>

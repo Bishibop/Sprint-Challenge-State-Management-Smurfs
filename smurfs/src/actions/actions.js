@@ -23,8 +23,7 @@ export const postSmurf = (newSmurfData) => dispatch => {
   axios
     .post(`http://192.168.1.208:3333/smurfs`, newSmurfData)
     .then(res => {
-      console.log('this is the response from the successful post:', res.data);
-      return dispatch({ type: POST_SMURF_SUCCESS, payload: newSmurfData });
+      return dispatch({ type: POST_SMURF_SUCCESS, payload: res.data });
     })
     .catch(err => dispatch({ type: POST_SMURF_FAIL, payload: err}));
 };

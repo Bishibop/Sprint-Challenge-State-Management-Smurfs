@@ -17,7 +17,8 @@ function SmurfForm({ postSmurf }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(smurf);
+    console.log('form submit', smurf);
+    postSmurf(smurf);
     setSmurf({
       name: "",
       age: "",
@@ -27,7 +28,7 @@ function SmurfForm({ postSmurf }) {
 
   return (
     <div className='smurfs-form'>
-      <form onSubmit={() => postSmurf(smurf)}>
+      <form onSubmit={handleSubmit}>
         <label>Name:
           <input
             type='text'
